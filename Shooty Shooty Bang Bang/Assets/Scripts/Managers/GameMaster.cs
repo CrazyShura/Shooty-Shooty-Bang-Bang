@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Singleton. Manager class that handles gameplay as a whole.
@@ -10,8 +11,6 @@ public class GameMaster : MonoBehaviour
 	static GameMaster instance;
 	[SerializeField]
 	List<Waypoint> waypoints;
-	[SerializeField]
-	PlayerController player;
 
 	int curretnWaypoint = -1;
 	#endregion
@@ -32,30 +31,20 @@ public class GameMaster : MonoBehaviour
 		instance = this;
 	}
 
-	void SendPlayerToNextWaypoint()
+	public Waypoint GiveNextWaypoint()
 	{
 		curretnWaypoint++;
 		if (curretnWaypoint >= waypoints.Count)
 		{
 			Debug.Log("Player is at the final waypoint");
-			return;
+			return null;
 		}
-		if(player.GoTo(waypoints[curretnWaypoint]))
-		{
-			
-		}
-		else
-		{
-			curretnWaypoint--;
-		}
+		return waypoints[curretnWaypoint];
 	}
 
-	private void Update()
+	public void Restart()
 	{
-		if(Input.GetMouseButtonDown(0)) 
-		{
-			SendPlayerToNextWaypoint();
-		}
+		SceneManager.LoadScene(0);
 	}
 	#endregion
 }
