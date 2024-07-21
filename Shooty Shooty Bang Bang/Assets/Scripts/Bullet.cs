@@ -53,6 +53,7 @@ public class Bullet : MonoBehaviour
 	/// </summary>
 	public void Go(Vector3 from, Vector3 to)
 	{
+		transform.parent = null;
 		transform.position = from;
 		transform.forward = (to - from).normalized;
 		rgbd.velocity = transform.forward * speed;
@@ -63,6 +64,7 @@ public class Bullet : MonoBehaviour
 
 	void ReturnHome()
 	{
+		transform.parent = host.BulletMama;
 		gameObject.SetActive(false);
 		going = false;
 		rgbd.velocity = Vector3.zero;

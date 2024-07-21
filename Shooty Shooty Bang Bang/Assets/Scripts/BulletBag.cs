@@ -18,9 +18,11 @@ public class BulletBag : MonoBehaviour
 
 	Queue<Bullet> bullets = new Queue<Bullet>();
 	Transform bulletMama;
+
 	#endregion
 
 	#region Properties
+	public Transform BulletMama { get => bulletMama;}
 	#endregion
 
 	#region Methods
