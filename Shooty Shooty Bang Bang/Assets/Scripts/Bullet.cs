@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Bullets. Suld be used in only in tandom wiht BulletBag class. To make bullet actually do bullet stuff use Go(Vector3 from, Vector3 to).
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
@@ -45,6 +48,9 @@ public class Bullet : MonoBehaviour
 		setup = true;
 	}
 
+	/// <summary>
+	/// Makes bullet teleport to position "from" and start going to position "to"
+	/// </summary>
 	public void Go(Vector3 from, Vector3 to)
 	{
 		transform.position = from;

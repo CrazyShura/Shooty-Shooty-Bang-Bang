@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Object pull for bullets. Use GiveMeBullet() to get a bullet, do not forget to set bullet up.
+/// </summary>
 public class BulletBag : MonoBehaviour
 {
 	#region Fields
@@ -8,9 +11,9 @@ public class BulletBag : MonoBehaviour
 	Bullet bulletPrefab;
 	[SerializeField]
 	int initialCapacity;
-	[SerializeField, Min(.1f)]
+	[SerializeField, Min(.1f), Tooltip("Speed of all bullets used provided by this bag")]
 	float bulletSpeed;//This might be better at a Gun script but not gonna put connection for one field
-	[SerializeField, Min(1f)]
+	[SerializeField, Min(1f), Tooltip("How long bullet from this bag will remain active")]
 	float bulletLifeTime;//TODO Ok now there is two fields that suld go on gun... GREAT
 
 	Queue<Bullet> bullets = new Queue<Bullet>();
